@@ -1,4 +1,4 @@
-# Polymath distribution contract + token contract
+# Polymath distribution contract + token contract audit
 The purpose of the contract is to distribute polymath tokens between multiple owners and contracts according to this schedule:
 
 * Presale supply - 240M (no vesting no cliff)
