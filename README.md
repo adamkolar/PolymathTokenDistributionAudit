@@ -32,7 +32,7 @@ Supposed intent behind this check in the `refundTokens` function is to prevent o
     require(_token != address(POLY));
 ```
 
-## 2. Log variables are not indexed
+## 2. Log arguments are not indexed
 
 ### PolyDistribution.sol / line 41, 42
 
@@ -41,12 +41,7 @@ Supposed intent behind this check in the `refundTokens` function is to prevent o
   event LogPolyClaimed(address _recipient, uint8 _fromSupply, uint256 _amountClaimed, uint256 _totalAllocated, uint256 _grandTotalClaimed);
 ```
 
-To make the log entries searchable, _rectipient and _fromSupply variables should be indexed (see: https://solidity.readthedocs.io/en/develop/contracts.html#events). The correct code should read:
-
-```javascript
-  event LogNewAllocation(address indexed _recipient, uint8 indexed _fromSupply, uint256 _totalAllocated, uint256 _grandTotalAllocated);
-  event LogPolyClaimed(address indexed _recipient, uint8 indexed _fromSupply, uint256 _amountClaimed, uint256 _totalAllocated, uint256 _grandTotalClaimed);
-```
+Depending on the way the authors want to work with the logs, _fromSupply and maybe even _recipient arguments could be indexed to make the logs seachable, for more info see: https://solidity.readthedocs.io/en/develop/contracts.html#events). Keep in mind that values of indexed arguments are not retrievable, their sole function is to provide ability to filter the log entries.
 
 # Other suggestions
 
